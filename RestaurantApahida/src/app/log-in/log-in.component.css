@@ -1,0 +1,8 @@
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+
+.image{
+  background-image: url("src/images/RestaurantBackGround.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+}

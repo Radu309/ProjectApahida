@@ -1,0 +1,98 @@
+<div class="image vh-100 bg-image">
+    <div class="container-fluid p-0">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5 class="card-title mb-0">Orders</h5>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Total Price</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>List</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor = "let order of orders">
+                  <td>{{order?.id}} </td>
+                  <td>{{order?.totalPrice}}</td>
+                  <td>{{order?.localDate}}</td>
+                  <td>{{order?.localTime}}</td>
+                  <td>
+                    <select (change)="onSelectAnotherStatus(order, $event)">
+                      <option >{{order?.status}}</option>
+                      <option >New Order</option>
+                      <option >Preparing</option>
+                      <option >Ready</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select>
+                      <option *ngFor = "let dish of order.dishList" >{{dish.name}}</option>
+                    </select>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Dishes</h5>
+              </div>
+              <table class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let dish of dishes">
+                    <td>{{dish.name}}</td>
+                    <td>{{dish.price}}</td>
+                    <td>{{dish.stock}}</td>
+                    <td><button (click)="clickOnAddDish(dish)" class="badge bg-success">  Add  </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0">New Order</h5>
+            </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-2"><h6 class="mb-0">Dishes</h6></div>
+                  <div class="col-sm-2 text-secondary" *ngFor = "let dish of dishesForOneOrder">
+                    {{dish?.name}}-{{dish.price}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-2"><h6 class="mb-0">Total Price</h6></div>
+                  <div class="col-sm-2 text-secondary">
+                    {{totalPrice}}
+                  </div>
+                  <div>
+                    <button (click)="clickOnAddOrder()" class="badge bg-success">  Add Order </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

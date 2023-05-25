@@ -1,0 +1,184 @@
+<div class="image vh-100 bg-image">
+    <div class="container-fluid p-0">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h5 class="card-title mb-0">Orders</h5>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor = "let employee of employees">
+                  <td>{{employee?.id}} </td>
+                  <td>{{employee?.name}}</td>
+                  <td>{{employee?.age}}</td>
+                  <td>{{employee?.username}}</td>
+                </tr>
+                </tbody>
+              </table>
+          </div>
+            <div class="card-header pb-0">
+              <h5 class="card-title mb-0">Dishes</h5>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let dish of dishes">
+                  <td>{{dish.name}}</td>
+                  <td>{{dish.price}}</td>
+                  <td>{{dish.stock}}</td>
+                  <td>
+                    <button
+                      (click)="clickOnDeleteDish(dish)"
+                      class="badge bg-success">Delete</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Create Employee Account</h5>
+              </div>
+              <table class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <td>
+                    <input [(ngModel)]  = "employeeName"
+                           required #name="ngModel"
+                           [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+                </thead>
+                <tr>
+                  <th>Age</th>
+                  <td>
+                    <input [(ngModel)]  = "employeeAge"
+                           required #age="ngModel"
+                           [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Username</th>
+                  <td>
+                    <input [(ngModel)]  = "employeeUsername"
+                           required #username="ngModel"
+                           [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Password</th>
+                  <th>
+                    <input type="password"
+                           [(ngModel)]  = "employeePassword"
+                           required #password="ngModel"
+                           [ngModelOptions]="{standalone: true}" />
+                  </th>
+                <tr>
+                <th>
+                </th>
+                  <th>
+                    <button
+                      (click)="clickOnCreateEmployee(name.value, age.value, username.value, password.value)"
+                      class="badge bg-success">  Add New Employee  </button>
+                  </th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Edit Dish</h5>
+              </div>
+              <table class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <td>
+                    <input [(ngModel)]  = "dishName"
+                           required #nameDish="ngModel"
+                           [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+                </thead>
+                <tr>
+                  <th>Price</th>
+                  <td>
+                    <input [(ngModel)]  = "dishPrice"
+                           required #priceDish="ngModel"
+                           [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Stock</th>
+                  <td>
+                    <input [(ngModel)]  = "dishStock"
+                           required #stockDish="ngModel"
+                           [ngModelOptions]="{standalone: true}"/>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    Add or Edit
+                  </th>
+                  <th>
+                    <button
+                      (click)="clickOnEditDish(nameDish.value, priceDish.value, stockDish.value)"
+                      class="badge bg-success">  Add/Edit  </button>
+                  </th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Generate reports</h5>
+              </div>
+              <div class="date-container">
+                <div class="date-container">
+                  <div class="date-column">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" name="start-date">
+                  </div>
+                  <div class="date-column">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" name="end-date">
+                  </div>
+                </div>
+                <div>
+                  <button (click)="generate('0')">Excel</button>
+                  <button (click)="generate('1')">CSV</button>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
